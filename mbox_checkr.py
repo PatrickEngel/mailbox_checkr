@@ -104,7 +104,7 @@ class MBoxCheckr(gtk.StatusIcon):
 		actions = [
 			('Menu',  None, 'Menu'),
 			('MarkAllAsRead', gtk.STOCK_OK, '_Mark all as Read', None, 'Mark all Mails as Read for MailBoxCheckr', self.on_mark_all_read),
-			('About', gtk.STOCK_ABOUT, '_About...', None, 'About MBoxPoller', self.on_about),
+			('About', gtk.STOCK_ABOUT, '_About...', None, 'About MBoxCheckr', self.on_about),
 			('Quit', gtk.STOCK_QUIT, '_Quit', None, 'Quit', self.on_quit)]
 		ag = gtk.ActionGroup('Actions')
 		ag.add_actions(actions)
@@ -114,7 +114,7 @@ class MBoxCheckr(gtk.StatusIcon):
 		self.menu = self.manager.get_widget('/Menubar/Menu/About').props.parent
 		self.set_from_stock(gtk.STOCK_NO)
 		self.set_blinking(True)
-		self.set_tooltip('MBoxPoller')
+		self.set_tooltip('MBoxCheckr')
 		self.set_visible(True)
 		self.connect('activate', self.on_activate)
 		self.connect('popup-menu', self.on_popup_menu)
