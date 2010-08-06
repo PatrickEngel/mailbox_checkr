@@ -1,0 +1,63 @@
+h1. mbox_checkr
+
+mbox_checkr is a *simple* Mailbox Check Script.
+
+Copyright (C) 2010  Patrick C. Engel
+
+
+.h2 LINUX
+
+Install python and pygtk.
+
+Configure mailbox.cfg and run:
+
+$ python mailbox_checkr.py
+
+
+********************************************************************
+
+.h2 WINDOWS 
+
+Lots of installers
+
+To install PyGTK, run these installers (in this order):
+
+python-2.5.4.msi 
+gtk2-runtime-2.16.0-2009-03-22-ash.exe 
+pycairo-1.4.12-2.win32-py2.5.exe 
+pygobject-2.14.2-2.win32-py2.5.exe 
+pygtk-2.12.1-3.win32-py2.5.exe
+
+via http://www.penjuinlabs.com/blog/?p=94
+
+
+.h2 WINDOWS (the win32 dist/executable) 
+
+Copy the whole Directory in your Application folder
+
+Configure mailbox.cfg with your mailbox data.
+
+Install a Link to `mailbox_checkr.exe' in your Autostart folder
+
+********************************************************************
+
+.h2 DEVELOPEMENT NOTES
+
+.h3 DISTRIBUTE
+
+$ zip -r mbox_checkr.zip  mbox_checkr_dist_win32
+
+.h3 CREATE A EXE ON WINDOWS
+
+# install py2exe
+$ setup.py py2exe
+
+via http://www.py2exe.org/index.cgi/Py2exeAndPyGTK
+
+********************************************************************
+
+.h2 TODO
+
+# Poll Interval
+# more Error/Exception handling and feedback 
+# (eg. "can not connect to mailbox")
