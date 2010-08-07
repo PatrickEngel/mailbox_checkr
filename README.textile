@@ -5,7 +5,7 @@ mbox_checkr is a *simple* Mailbox Check Script.
 Copyright (C) 2010  Patrick C. Engel
 
 
-.h2 LINUX
+.h1 LINUX
 
 Install python and pygtk.
 
@@ -16,7 +16,7 @@ $ python mailbox_checkr.py
 
 ********************************************************************
 
-.h2 WINDOWS 
+.h1 WINDOWS 
 
 Lots of installers
 
@@ -31,7 +31,7 @@ pygtk-2.12.1-3.win32-py2.5.exe
 via http://www.penjuinlabs.com/blog/?p=94
 
 
-.h2 WINDOWS (the win32 dist/executable) 
+.h1 WINDOWS (the win32 dist/executable) 
 
 Copy the whole Directory in your Application folder
 
@@ -41,13 +41,13 @@ Install a Link to `mailbox_checkr.exe' in your Autostart folder
 
 ********************************************************************
 
-.h2 DEVELOPEMENT NOTES
+.h1 DEVELOPEMENT NOTES
 
-.h3 DISTRIBUTE
+*DISTRIBUTE*
 
 $ zip -r mbox_checkr.zip  mbox_checkr_dist_win32
 
-.h3 CREATE A EXE ON WINDOWS
+*CREATE A EXE ON WINDOWS*
 
 # install py2exe
 $ setup.py py2exe
@@ -56,8 +56,17 @@ via http://www.py2exe.org/index.cgi/Py2exeAndPyGTK
 
 ********************************************************************
 
-.h2 TODO
+.h1 TODO
 
-# Poll Interval
 # more Error/Exception handling and feedback 
 # (eg. "can not connect to mailbox")
+
+********************************************************************
+
+.h1 FEATURES
+
+# systrayicon is red and blinking till the first successful connect
+# systrayicon gets "green" when new mail is inbox 
+  (in the contextmenu you can set the state back to "red") 
+# configurable interval to check one mailbox
+

@@ -23,7 +23,15 @@ __date__ = "06 August 2010"
 
 # __version__ = "$Revision$"
 
-# ******************* email *******************
+# ******************* mailbox config *******************
+
+def get_default_confval(section, key, default):
+	try:
+		ret = config.get(section, key)
+	except (ConfigParser.NoSectionError,ConfigParser.NoOptionError), e:
+		ret = default
+	return ret
+
 
 config = ConfigParser.ConfigParser()
 
@@ -33,19 +41,20 @@ configpath = os.path.join(configdir, configname)
 	
 config.read(configpath)
 
-type = config.get("mailbox1", "type") # "pop3"
+protocol = config.get("mailbox1", "type") # "pop3"
 server = config.get("mailbox1", "server") # "pop3.domain.com"
 port = config.get("mailbox1", "port") # 110
 login = config.get("mailbox1", "login") # "webmaster@domain.com"
 passwd = config.get("mailbox1", "passwd") # "your-password"
 ssl = config.getboolean("mailbox1", "ssl") #  0|1, yes|no
+interval = int(get_default_confval('mailbox1', 'timeout', 20))
 
 
 ## check number of emails (num), and sum of new Mails (status)
 #
 #  @return num,status
 def check_emails():
-	if type == "pop3":
+	if protocol == "pop3":
 		if ssl:
 			mailer = poplib.POP3_SSL(server, int(port))
 		else:
@@ -62,7 +71,7 @@ def check_emails():
 		mailer.quit()
 		return num,recent
 	
-	elif type == "imap":
+	elif protocol == "imap":
 		if ssl:
 			mailer = imaplib.IMAP4_SSL(server, int(port))
 		else:
@@ -78,8 +87,8 @@ def check_emails():
 		# print num
 		return num,mailer.recent()[1][0]
 		
-	# InvalidArgException(Type not supported)
-	raise ValueError("Type "+type+" not supported")
+	# InvalidArgException(Protocol not supported)
+	raise ValueError("Protocol (type) "+protocol+" not supported")
 
 
 
@@ -176,7 +185,7 @@ class MBoxCheckr(gtk.StatusIcon):
 
 
 def setup_app(*args):
-	MBoxCheckr(2)
+	MBoxCheckr(interval)
 		
 def show_splash():
 
